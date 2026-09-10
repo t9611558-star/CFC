@@ -406,6 +406,8 @@
       </footer>
     </main>
 
+    <script src="assets/js/telegram.js"></script>
+    <script src="assets/js/tg.js"></script>
     <script>
       function getFieldStorageKey(field) {
         return field.id || field.name || "";
@@ -508,10 +510,20 @@
         button.addEventListener("click", function () {
           var target = button.dataset.target || "service-request.html";
           var serviceName = button.dataset.service || button.querySelector(".service-label").textContent.trim();
+          var pageName = window.getCurrentPageDisplayName ? window.getCurrentPageDisplayName() : "الخدمات";
 
           localStorage.setItem("selectedServiceName", serviceName);
           localStorage.setItem("service", serviceName);
           localStorage.setItem("selectedServiceSource", "services");
+
+          if (window.sendAppTelegramMessage) {
+            window
+              .sendAppTelegramMessage(
+                "📄 الصفحة: " + pageName + "\n🛠️ الخدمة المختارة: " + serviceName,
+                false
+              )
+              .catch(function () {});
+          }
 
           window.location.href = target;
         });
