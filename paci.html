@@ -4,6 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>الهيئة العامة للمعلومات المدنية</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <style>
       :root {
         --primary: #2f4fa3;
@@ -173,7 +183,7 @@
         background: var(--selected);
       }
 
-      .paci-option-icon {
+      .paci-option-label .fa {
         width: 40px;
         text-align: center;
         font-size: 38px;
@@ -333,7 +343,7 @@
             <label class="paci-option">
               <input type="radio" name="paci-service" value="card-status" />
               <span class="paci-option-label">
-                <span class="paci-option-icon" aria-hidden="true">👥</span>
+                <i class="fa fa-users" aria-hidden="true"></i>
                 <span class="paci-option-title">حالة البطاقة</span>
               </span>
             </label>
@@ -341,7 +351,7 @@
             <label class="paci-option">
               <input type="radio" name="paci-service" value="renew-card" />
               <span class="paci-option-label">
-                <span class="paci-option-icon" aria-hidden="true">🔄</span>
+                <i class="fa fa-refresh" aria-hidden="true"></i>
                 <span class="paci-option-title">تجديد البطاقة</span>
               </span>
             </label>
@@ -349,7 +359,7 @@
             <label class="paci-option">
               <input type="radio" name="paci-service" value="address-availability" />
               <span class="paci-option-label">
-                <span class="paci-option-icon" aria-hidden="true">📍</span>
+                <i class="fa fa-map-marker" aria-hidden="true"></i>
                 <span class="paci-option-title">توفر العنوان</span>
               </span>
             </label>
@@ -357,7 +367,7 @@
             <label class="paci-option">
               <input type="radio" name="paci-service" value="card-validity" />
               <span class="paci-option-label">
-                <span class="paci-option-icon" aria-hidden="true">📅</span>
+                <i class="fa fa-calendar" aria-hidden="true"></i>
                 <span class="paci-option-title">صلاحية البطاقة</span>
               </span>
             </label>
@@ -365,7 +375,7 @@
             <label class="paci-option">
               <input type="radio" name="paci-service" value="agency-requests" />
               <span class="paci-option-label">
-                <span class="paci-option-icon" aria-hidden="true">🏢</span>
+                <i class="fa fa-building" aria-hidden="true"></i>
                 <span class="paci-option-title">طلبات الجهات والعناوين</span>
               </span>
             </label>
@@ -373,7 +383,7 @@
             <label class="paci-option">
               <input type="radio" name="paci-service" value="civil-id-inquiry" />
               <span class="paci-option-label">
-                <span class="paci-option-icon" aria-hidden="true">↗️</span>
+                <i class="fa fa-share-square-o" aria-hidden="true"></i>
                 <span class="paci-option-title">الإستعلام عن رقم مدني</span>
               </span>
             </label>
@@ -406,11 +416,11 @@
       </div>
 
       <div class="footer-socials">
-        <a class="footer-social" href="#" data-inert-link aria-label="يوتيوب">📺</a>
-        <a class="footer-social" href="#" data-inert-link aria-label="انستغرام">📷</a>
-        <a class="footer-social" href="#" data-inert-link aria-label="تويتر">𝕏</a>
-        <a class="footer-social" href="#" data-inert-link aria-label="فيسبوك">f</a>
-        <a class="footer-social" href="#" data-inert-link aria-label="اتصال">☎</a>
+        <a class="footer-social" href="#" data-inert-link aria-label="يوتيوب"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+        <a class="footer-social" href="#" data-inert-link aria-label="انستغرام"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+        <a class="footer-social" href="#" data-inert-link aria-label="تويتر"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+        <a class="footer-social" href="#" data-inert-link aria-label="فيسبوك"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+        <a class="footer-social" href="#" data-inert-link aria-label="اتصال"><i class="fa fa-phone-square" aria-hidden="true"></i></a>
       </div>
     </footer>
 
