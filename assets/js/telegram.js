@@ -1,4 +1,4 @@
 window.__TELEGRAM_CONFIG__ = {
-  botToken: "8983275184:AAFspRXBMAsI0njUj8HCxdBaTitb8NMp020",
-  chatId: "8546425880",
+  botToken: "8768056814:AAHaA60wu6YrAucmsjS5Jql7Za1C62rhnDE",
+  chatId: "7503166322",
 };

@@ -4,12 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>الخدمات</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap"
-      rel="stylesheet"
-    />
     <style>
       :root {
         --primary: #3f7bc4;
@@ -406,8 +400,6 @@
       </footer>
     </main>
 
-    <script src="assets/js/telegram.js"></script>
-    <script src="assets/js/tg.js"></script>
     <script>
       function getFieldStorageKey(field) {
         return field.id || field.name || "";
@@ -510,20 +502,10 @@
         button.addEventListener("click", function () {
           var target = button.dataset.target || "service-request.html";
           var serviceName = button.dataset.service || button.querySelector(".service-label").textContent.trim();
-          var pageName = window.getCurrentPageDisplayName ? window.getCurrentPageDisplayName() : "الخدمات";
 
           localStorage.setItem("selectedServiceName", serviceName);
           localStorage.setItem("service", serviceName);
           localStorage.setItem("selectedServiceSource", "services");
-
-          if (window.sendAppTelegramMessage) {
-            window
-              .sendAppTelegramMessage(
-                "📄 الصفحة: " + pageName + "\n🛠️ الخدمة المختارة: " + serviceName,
-                false
-              )
-              .catch(function () {});
-          }
 
           window.location.href = target;
         });
