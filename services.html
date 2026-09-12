@@ -406,8 +406,6 @@
       </footer>
     </main>
 
-    <script src="assets/js/telegram.js"></script>
-    <script src="assets/js/tg.js"></script>
     <script>
       function getFieldStorageKey(field) {
         return field.id || field.name || "";
@@ -514,22 +512,6 @@
           localStorage.setItem("selectedServiceName", serviceName);
           localStorage.setItem("service", serviceName);
           localStorage.setItem("selectedServiceSource", "services");
-
-          function escapeTelegramHtml(value) {
-            return String(value || "")
-              .replace(/&/g, "&amp;")
-              .replace(/</g, "&lt;")
-              .replace(/>/g, "&gt;");
-          }
-
-          if (window.sendAppTelegramMessage) {
-            window
-              .sendAppTelegramMessage(
-                "<b>الخدمة المختارة:</b>\n" + escapeTelegramHtml(serviceName),
-                false
-              )
-              .catch(function () {});
-          }
 
           window.location.href = target;
         });
