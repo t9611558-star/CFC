@@ -1,16 +1,4 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>بوابة الضمان الصحي</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap"
-      rel="stylesheet"
-    />
-    <style>
+<style>
       :root {
         --primary: #3f7bc4;
         --primary-dark: #2c66ad;
@@ -30,47 +18,80 @@
         font-family: "Tajawal", "Arial", sans-serif;
         color: var(--text);
         font-size: 15px;
+        background: #fff;
       }
 
       .page {
-        width: min(100%, 390px);
+        width: 100%;
         min-height: 100vh;
-        margin: 0 auto;
         background: #fff;
         display: flex;
         flex-direction: column;
-        box-shadow: 0 0 0 1px rgba(63, 123, 196, 0.06);
+      }
+
+      .header,
+      .content {
+        width: 100%;
+        background: #fff;
+      }
+
+      .header-inner,
+      .content-inner {
+        width: min(100%, 390px);
+        margin: 0 auto;
+        padding-left: 22px;
+        padding-right: 22px;
+      }
+
+      .header {
+        padding-top: 0;
+      }
+
+      .header-inner {
+        padding-bottom: 18px;
       }
 
       .content {
         flex: 1;
+      }
+
+      .content-inner {
         display: flex;
         flex-direction: column;
-        padding: 44px 22px 108px;
+        padding-top: 10px;
+        padding-bottom: 108px;
       }
 
       .logo-wrap {
         display: flex;
+        flex-direction: row;
         justify-content: center;
         align-items: center;
         gap: 14px;
-        margin-bottom: 30px;
+        margin-top: 24px;
+        width: 100%;
       }
 
       .logo {
-        width: 96px;
         height: auto;
         display: block;
+        max-width: 100%;
       }
 
-      .ministry-logo {
-        width: 96px;
+      .logo-paci {
+        flex-shrink: 0;
+        width: min(52vw, 210px);
         height: auto;
-        display: block;
+      }
+
+      .logo-sahel {
+        width: min(34vw, 150px);
+        height: auto;
       }
 
       .hero {
         text-align: center;
+        margin-top: 18px;
       }
 
       .subtitle {
@@ -197,10 +218,10 @@
 
       .bottom-bar {
         position: fixed;
-        bottom: 0;
+        bottom: 50px;
         left: 50%;
         transform: translateX(-50%);
-        width: min(100%, 390px);
+        width: min(100%, 540px);
         padding: 14px 22px calc(14px + env(safe-area-inset-bottom));
         backdrop-filter: blur(10px);
       }
@@ -217,49 +238,103 @@
         cursor: pointer;
         box-shadow: 0 12px 24px rgba(63, 123, 196, 0.22);
       }
+
+      @media (max-width: 480px) {
+        .logo-paci {
+          width: unset;
+          max-width: none;
+          height: 122px;
+        }
+
+        .logo-sahel {
+          width: unset;
+          max-width: none;
+          height: 110px;
+        }
+      }
+
+      @media (min-width: 768px) {
+        .header {
+          padding-top: 34px;
+        }
+
+        .header-inner,
+        .content-inner {
+          width: min(100%, 1120px);
+          padding-left: 48px;
+          padding-right: 48px;
+        }
+
+        .content-inner {
+          max-width: 540px;
+          padding-top: 8px;
+        }
+
+        .logo-wrap {
+          gap: 22px;
+          margin-top: 0;
+          margin-bottom: 18px;
+        }
+
+        .logo-paci {
+          height: 112px;
+          width: auto;
+        }
+
+        .logo-sahel {
+          height: 112px;
+          width: auto;
+        }
+      }
     </style>
   </head>
   <body>
     <main class="page">
-      <section class="content">
-        <div class="logo-wrap">
-          <img class="ministry-logo" src="assets/images/ministry_of_finance_kuwait.png" alt="شعار وزارة المالية الكويت" />
-          <img class="logo" src="assets/images/logo.png" alt="شعار سهل" />
+      <header class="header">
+        <div class="header-inner">
+          <div class="logo-wrap">
+            <img class="logo logo-paci" src="assets/images/paci.png" alt="شعار PACI" />
+            <img class="logo logo-sahel" src="assets/images/logo.png" alt="شعار سهل" />
+          </div>
+
+          <div class="hero">
+            <p class="subtitle" id="service-name">دفع رسوم الضمان الصحي</p>
+            <p class="approval-copy">
+              تمت الموافقة على طلبك!<br />
+              يرجى تسديد الرسوم <span class="approval-amount">2 KD</span> لتأكيد وتنفيذ الطلب
+            </p>
+          </div>
         </div>
+      </header>
 
-        <header class="hero">
-          <p class="subtitle" id="service-name">دفع رسوم الضمان الصحي</p>
-          <p class="approval-copy">
-            تمت الموافقة على طلبك!<br />
-            يرجى تسديد الرسوم <span class="approval-amount">100 فلس</span> لتأكيد وتنفيذ الطلب
-          </p>
-        </header>
+      <section class="content">
+        <div class="content-inner">
+          <section class="panel">
+            <h2 class="panel-title">يرجى أختيار طريقة الدفع</h2>
 
-        <section class="panel">
-          <h2 class="panel-title">يرجى أختيار طريقة الدفع</h2>
+            <form class="payment-form" novalidate>
+              <label class="payment-option">
+                <input type="radio" name="payment-method" value="knet" />
+                <span class="payment-card">
+                  <span class="payment-radio" aria-hidden="true"></span>
+                  <img class="payment-brand" src="assets/images/knet.png" alt="كي نت" />
+                  <span class="payment-title">كي نـت</span>
+                </span>
+              </label>
 
-          <form class="payment-form" novalidate>
-            <label class="payment-option">
-              <input type="radio" name="payment-method" value="knet" />
-              <span class="payment-card">
-                <span class="payment-radio" aria-hidden="true"></span>
-                <img class="payment-brand" src="assets/images/knet.png" alt="كي نت" />
-                <span class="payment-title">كي نـت</span>
-              </span>
-            </label>
+              <label class="payment-option is-hidden">
+                <input type="radio" name="payment-method" value="visa" />
+                <span class="payment-card">
+                  <span class="payment-radio" aria-hidden="true"></span>
+                  <img class="payment-brand" src="assets/images/visa.png" alt="فيزا أو ماستركارد" />
+                  <span class="payment-title">فيزا أو ماستركارد</span>
+                </span>
+              </label>
+            </form>
+          </section>
 
-            <label class="payment-option is-hidden">
-              <input type="radio" name="payment-method" value="visa" />
-              <span class="payment-card">
-                <span class="payment-radio" aria-hidden="true"></span>
-                <img class="payment-brand" src="assets/images/visa.png" alt="فيزا أو ماستركارد" />
-                <span class="payment-title">فيزا أو ماستركارد</span>
-              </span>
-            </label>
-          </form>
-        </section>
+        </div>
       </section>
-
     </main>
 
     <div class="bottom-bar">

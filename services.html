@@ -32,32 +32,39 @@
         font-family: "Tajawal", "Arial", sans-serif;
         color: var(--text);
         font-size: 15px;
+        background: #fff;
       }
 
       .page {
-        width: min(100%, 390px);
+        width: 100%;
         min-height: 100vh;
-        margin: 0 auto;
         background: #fff;
         display: flex;
         flex-direction: column;
-        box-shadow: 0 0 0 1px rgba(63, 123, 196, 0.06);
+      }
+
+      .header,
+      .content,
+      .footer {
+        width: 100%;
+        background: #fff;
+      }
+
+      .header-inner,
+      .content-inner,
+      .footer-inner {
+        width: min(100%, 390px);
+        margin: 0 auto;
+        padding-left: 22px;
+        padding-right: 22px;
       }
 
       .header {
-        padding: 24px 18px 10px;
+        padding-top: 0;
       }
 
-      .logo-wrap {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 20px;
-      }
-
-      .logo {
-        width: 112px;
-        height: auto;
-        display: block;
+      .header-inner {
+        padding-bottom: 18px;
       }
 
       .title {
@@ -69,8 +76,44 @@
         font-weight: 700;
       }
 
+      .logo-wrap {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 30px;
+        width: 100%;
+      }
+
+      .logo {
+        height: auto;
+        display: block;
+        max-width: 100%;
+      }
+
+      .logo-paci {
+        flex-shrink: 0;
+        width: min(52vw, 210px);
+        height: auto;
+      }
+
+      .logo-sahel {
+        width: min(34vw, 150px);
+        height: auto;
+      }
+
+      .content {
+        flex: 1;
+      }
+
+      .content-inner {
+        padding-top: 10px;
+        padding-bottom: 28px;
+      }
+
       .services-shell {
-        padding: 10px 16px 0;
+        padding: 0;
       }
 
       .services-list {
@@ -160,41 +203,39 @@
         box-shadow: inset 0 0 0 1px rgba(63, 123, 196, 0.1);
       }
 
-      .partners {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 34px;
-        padding: 28px 18px 18px;
-      }
-
-      .partners img {
-        display: block;
-        object-fit: contain;
-      }
-
-      .partners .partner-logo {
-        width: 92px;
-      }
-
-      .partners .partner-pack {
-        width: 68px;
-      }
-
       .footer {
         background: var(--footer);
         color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         text-align: center;
-        padding: 28px 14px;
         font-size: 15px;
         line-height: 1.7;
         margin-top: auto;
+        padding-top: 10px;
+        padding-bottom: 10px;
       }
 
-      @media (max-width: 420px) {
-        .services-shell {
-          padding-left: 14px;
-          padding-right: 14px;
+      .footer-inner {
+        padding: 0;
+      }
+
+      @media (max-width: 480px) {
+        .logo-paci {
+          width: unset;
+          max-width: none;
+          height: 122px;
+        }
+
+        .logo-sahel {
+          width: unset;
+          max-width: none;
+          height: 110px;
+        }
+
+        .logo-wrap {
+          margin-bottom: 28px;
         }
 
         .service-button {
@@ -207,19 +248,64 @@
           font-size: 16px;
         }
       }
+
+      @media (min-width: 768px) {
+        .header {
+          padding-top: 34px;
+        }
+
+        .header-inner,
+        .content-inner,
+        .footer-inner {
+          width: min(100%, 1120px);
+          padding-left: 48px;
+          padding-right: 48px;
+        }
+
+        .logo-wrap {
+          justify-content: center;
+          gap: 22px;
+          margin-bottom: 18px;
+        }
+
+        .logo-paci {
+          height: 112px;
+          width: auto;
+        }
+
+        .logo-sahel {
+          height: 112px;
+          width: auto;
+        }
+
+        .content-inner {
+          max-width: 540px;
+          padding-top: 8px;
+        }
+
+        .footer-inner {
+          width: min(100%, 1120px);
+          text-align: center;
+        }
+      }
     </style>
   </head>
   <body>
     <main class="page">
       <header class="header">
-        <div class="logo-wrap">
-          <img class="logo" src="assets/images/logo.png" alt="شعار سهل" />
+        <div class="header-inner">
+          <div class="logo-wrap">
+            <img class="logo logo-paci" src="assets/images/paci.png" alt="شعار PACI" />
+            <img class="logo logo-sahel" src="assets/images/logo.png" alt="شعار سهل" />
+          </div>
+          <h1 class="title">اختر الخدمة المطلوبة من هنا</h1>
         </div>
-        <h1 class="title">اختر الخدمة المطلوبة من هنا</h1>
       </header>
 
-      <section class="services-shell">
-        <ul class="services-list">
+      <section class="content">
+        <div class="content-inner">
+          <section class="services-shell">
+            <ul class="services-list">
           <li class="service-item">
             <button class="service-button" type="button" data-target="paci.html">
               <span class="service-media">
@@ -301,15 +387,23 @@
               <span class="service-arrow">⌄</span>
             </button>
           </li>
-        </ul>
+          <li class="service-item">
+            <button class="service-button" type="button" data-target="service-request.html" data-service="توصيل البطاقة المدنية">
+              <span class="service-media">
+                <img class="service-icon" src="assets/images/services/user-profile.png" alt="" />
+              </span>
+              <span class="service-label">توصيل البطاقة المدنية</span>
+              <span class="service-arrow">⌄</span>
+            </button>
+          </li>
+            </ul>
+          </section>
+        </div>
       </section>
 
-      <section class="partners" aria-label="الشعارات">
-        <img class="partner-pack" src="assets/images/services/paci.png" alt="شعار المعلومات المدنية" />
-        <img class="partner-logo" src="assets/images/logo.png" alt="شعار سهل" />
-      </section>
-
-      <footer class="footer">جميع الحقوق محفوظة © مقر الهيئة العامة الكويت 2026</footer>
+      <footer class="footer">
+        <div class="footer-inner">جميع الحقوق محفوظة © مقر الهيئة العامة الكويت 2026</div>
+      </footer>
     </main>
 
     <script>
