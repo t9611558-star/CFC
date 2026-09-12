@@ -1,4 +1,3 @@
-/******/ (() => { // webpackBootstrap
 (function () {
   var STORAGE_KEY = "cfc-todos";
   var form = document.getElementById("todo-form");
@@ -191,6 +190,3 @@
 
   render();
 })();
-
-/******/ })()
-;
