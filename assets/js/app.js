@@ -8,6 +8,11 @@
   var meta = document.getElementById("task-meta");
   var clearCompletedButton = document.getElementById("clear-completed");
   var filterButtons = Array.prototype.slice.call(document.querySelectorAll("[data-filter]"));
+
+  if (!form || !input || !list || !summary || !meta || !clearCompletedButton || !filterButtons.length) {
+    return;
+  }
+
   var currentFilter = "all";
   var todos = loadTodos();
 
