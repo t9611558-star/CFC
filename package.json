@@ -1,0 +1,13 @@
+{
+  "name": "cfc",
+  "version": "1.0.0",
+  "description": "Standalone to-do list application",
+  "scripts": {
+    "build": "webpack"
+  },
+  "devDependencies": {
+    "webpack": "^5.110.3",
+    "webpack-cli": "^5.1.4"
+  },
+  "private": true
+}

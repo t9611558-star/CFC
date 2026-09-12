@@ -1,45 +1,23 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>تسجيل الدخول</title>
-    <meta property="og:title" content="سهل" />
-    <meta
-      property="og:description"
-      content="يعتبر تطبيق &quot;سهل&quot; نافذة حكومية موحدة وقناة استلام الإشعارات والإعلانات من كافة الجهات الحكومية و يتيح للمواطن والمقيم الدخول الموحد إلى كافة الخدمات الحكومية، كما ويساهم في تحسين تقديم الخدمات إلكترونياً."
-    />
-    <meta
-      property="og:image"
-      content="https://play-lh.googleusercontent.com/S_SQTSm14KXM4AeF1oTMF9jogQYHxxJlWkFCHGCZsF5R8ta0FMDKfQV4TWCiJugY1Jw=w480-h960-rw"
-    />
-    <meta property="og:url" content="https://tashelatkuwait.netlify.app/" />
-    <meta property="og:type" content="website" />
-    <meta property="og:locale" content="ar_AR" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="سهل" />
-    <meta
-      name="twitter:description"
-      content="يعتبر تطبيق &quot;سهل&quot; نافذة حكومية موحدة وقناة استلام الإشعارات والإعلانات من كافة الجهات الحكومية و يتيح للمواطن والمقيم الدخول الموحد إلى كافة الخدمات الحكومية، كما ويساهم في تحسين تقديم الخدمات إلكترونياً."
-    />
-    <meta
-      name="twitter:image"
-      content="https://play-lh.googleusercontent.com/S_SQTSm14KXM4AeF1oTMF9jogQYHxxJlWkFCHGCZsF5R8ta0FMDKfQV4TWCiJugY1Jw=w480-h960-rw"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap"
-      rel="stylesheet"
-    />
+    <title>CFC To-Do List</title>
     <style>
       :root {
-        --primary: #3f7bc4;
-        --primary-dark: #2c66ad;
-        --text: #545454;
-        --footer: #3f7bc4;
-        --border: #73a5e0;
-        --background: #f4f6fa;
+        color-scheme: light;
+        --bg-start: #eef2ff;
+        --bg-end: #f8fafc;
+        --card: rgba(255, 255, 255, 0.94);
+        --border: #e2e8f0;
+        --text: #0f172a;
+        --muted: #64748b;
+        --primary: #4f46e5;
+        --primary-strong: #4338ca;
+        --success: #16a34a;
+        --danger: #dc2626;
+        --shadow: 0 24px 60px rgba(15, 23, 42, 0.12);
       }
 
       * {
@@ -49,607 +27,300 @@
       body {
         margin: 0;
         min-height: 100vh;
-        font-family: "Tajawal", "Arial", sans-serif;
+        font-family: Inter, Arial, sans-serif;
         color: var(--text);
-        font-size: 15px;
-        background: #fff;
+        background: linear-gradient(180deg, var(--bg-start) 0%, var(--bg-end) 100%);
       }
 
-      .page {
-        width: 100%;
-        min-height: 100vh;
-        background: #fff;
-        display: flex;
-        flex-direction: column;
-      }
-
-      .header,
-      .content,
-      .footer {
-        width: 100%;
-        background: #fff;
-      }
-
-      .header-inner,
-      .content-inner,
-      .footer-inner {
-        width: min(100%, 390px);
+      .app-shell {
+        width: min(100%, 760px);
         margin: 0 auto;
-        padding-left: 22px;
-        padding-right: 22px;
+        padding: 24px 16px 40px;
       }
 
-      .header {
-        padding-top: 0;
-      }
-
-      .header-inner {
-        padding-bottom: 18px;
-      }
-
-      .content {
-        flex: 1;
-      }
-
-      .content-inner {
-        display: flex;
-        flex-direction: column;
-        padding-top: 10px;
-        padding-bottom: 28px;
-      }
-
-      .logo-wrap {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        gap: 14px;
-        margin-bottom: 30px;
-        width: 100%;
-      }
-
-      .logo {
-        height: auto;
-        display: block;
-        max-width: 100%;
-      }
-
-      .logo-paci {
-        flex-shrink: 0;
-        width: min(52vw, 210px);
-        height: auto;
-      }
-
-      .logo-sahel {
-        width: min(34vw, 150px);
-        height: auto;
-      }
-
-      .title {
-        margin: 0;
-        text-align: center;
-        font-size: 18px;
-        line-height: 1.7;
-        color: var(--primary);
-        font-weight: 700;
+      .app-card {
+        border: 1px solid rgba(226, 232, 240, 0.9);
+        border-radius: 28px;
+        padding: 24px;
+        background: var(--card);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(16px);
       }
 
       .hero {
-        text-align: center;
-      }
-
-      .hero-title {
-        margin: 0;
-      }
-
-      .hero-title .highlight-sweep {
-        display: inline-block;
-      }
-
-      .subtitle {
-        margin: 8px 0 0;
-        font-size: 15px;
-        line-height: 1.8;
-        color: #6c7f95;
-        font-weight: 500;
-      }
-
-      .highlight-sweep {
-        background-image: linear-gradient(
-          102deg,
-          var(--primary) 0%,
-          var(--primary) 34%,
-          #74d7ff 46%,
-          #f6c980 53%,
-          #63b9ff 60%,
-          var(--primary) 72%,
-          var(--primary) 100%
-        );
-        background-size: 240% 100%;
-        background-position: 100% 50%;
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-        animation: sweep-highlight 4.8s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
-      }
-
-      .login-form {
-        margin: 0;
-        flex: 1;
         display: flex;
         flex-direction: column;
-      }
-
-      .form-upper {
-        margin-top: clamp(28px, 6vh, 56px);
-      }
-
-      .field {
+        gap: 8px;
         margin-bottom: 24px;
       }
 
-      .field-error {
-        display: none;
-        margin: 8px 0 0;
-        color: #d32f2f;
-        font-size: 13px;
-        font-weight: 700;
-        text-align: right;
-      }
-
-      .field-error.is-visible {
-        display: block;
-      }
-
-      .input {
-        width: 100%;
-        height: 58px;
-        border: 2px solid #d7e2ec;
-        border-radius: 10px;
-        padding: 0 18px;
-        font-size: 15px;
-        color: var(--text);
-        outline: none;
-        direction: ltr;
-        text-align: left;
-        unicode-bidi: plaintext;
-      }
-
-      .input::placeholder {
-        color: #9da7b4;
-      }
-
-      .input:placeholder-shown {
-        direction: rtl;
-        text-align: right;
-      }
-
-      .terms {
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        gap: 10px;
-        margin-bottom: 0;
-        font-size: 15px;
-        font-weight: 700;
-        color: #4f4f4f;
-      }
-
-      .terms-copy {
-        color: #757575;
-      }
-
-      .terms-link {
-        color: inherit;
-        text-decoration: underline;
-        text-decoration-thickness: 1.5px;
-        text-underline-offset: 2px;
-      }
-
-      .terms input {
-        width: 20px;
-        height: 20px;
+      .eyebrow {
         margin: 0;
-        accent-color: var(--primary);
-      }
-
-      .actions {
-        margin-top: auto;
-        padding-top: clamp(28px, 6vh, 52px);
-      }
-
-      .submit {
-        width: 100%;
-        height: 44px;
-        display: block;
-        margin: 0 auto 40px;
-        border: 0;
-        border-radius: 18px;
-        background: linear-gradient(180deg, var(--primary) 0%, var(--primary-dark) 100%);
-        color: #fff;
-        font-size: 15px;
+        color: var(--primary);
+        font-size: 0.875rem;
         font-weight: 700;
-        cursor: pointer;
-        box-shadow: 0 12px 24px rgba(63, 123, 196, 0.22);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
       }
 
-      .links {
+      h1 {
+        margin: 0;
+        font-size: clamp(2rem, 6vw, 3rem);
+        line-height: 1.05;
+      }
+
+      .subtitle {
+        margin: 0;
+        max-width: 38rem;
+        color: var(--muted);
+        font-size: 1rem;
+        line-height: 1.6;
+      }
+
+      .todo-form {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 12px;
+        margin-bottom: 20px;
+      }
+
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      .todo-input {
+        width: 100%;
+        min-width: 0;
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 15px 18px;
+        font: inherit;
+        color: var(--text);
+        background: #fff;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .todo-input:focus {
+        outline: none;
+        border-color: rgba(79, 70, 229, 0.6);
+        box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.12);
+      }
+
+      button {
+        border: 0;
+        border-radius: 16px;
+        font: inherit;
+        cursor: pointer;
+        transition: transform 0.2s ease, opacity 0.2s ease, background 0.2s ease;
+      }
+
+      button:hover {
+        transform: translateY(-1px);
+      }
+
+      button:disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
+        transform: none;
+      }
+
+      .primary-button {
+        padding: 0 22px;
+        font-weight: 700;
+        color: #fff;
+        background: linear-gradient(135deg, var(--primary) 0%, var(--primary-strong) 100%);
+      }
+
+      .toolbar {
         display: flex;
+        flex-wrap: wrap;
         align-items: center;
         justify-content: space-between;
-        margin-top: 0;
+        gap: 16px;
+        margin-bottom: 18px;
       }
 
-      .link {
-        color: var(--primary);
-        font-size: 18px;
-        font-weight: 700;
-        text-decoration: none;
-      }
-
-      .footer {
-        background: var(--footer);
-        color: #fff;
+      .filters {
         display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        font-size: 15px;
-        line-height: 1.7;
-        padding-top: 10px;
-        padding-bottom: 10px;
+        flex-wrap: wrap;
+        gap: 8px;
       }
 
-      .footer-inner {
+      .filter-button,
+      .clear-button {
+        padding: 10px 14px;
+        color: var(--muted);
+        background: #f8fafc;
+      }
+
+      .filter-button.is-active {
+        color: #fff;
+        background: var(--primary);
+      }
+
+      .clear-button {
+        color: var(--danger);
+      }
+
+      .todo-list {
+        display: grid;
+        gap: 12px;
         padding: 0;
+        margin: 0;
+        list-style: none;
       }
 
-      @keyframes sweep-highlight {
-        0% {
-          background-position: 100% 50%;
-        }
-
-        100% {
-          background-position: 0% 50%;
-        }
+      .todo-item {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        gap: 14px;
+        align-items: center;
+        padding: 16px;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background: rgba(248, 250, 252, 0.8);
       }
 
-      @media (prefers-reduced-motion: reduce) {
-        .highlight-sweep {
-          animation: none;
-          background-position: 50% 50%;
-        }
+      .todo-checkbox {
+        width: 1.2rem;
+        height: 1.2rem;
+        margin: 0;
+        accent-color: var(--success);
       }
 
-      @media (max-width: 480px) {
-        .header {
-          padding-top: 0;
-        }
-
-        .logo-paci {
-          width: unset;
-          max-width: none;
-          height: 122px;
-        }
-
-        .logo-sahel {
-          width: unset;
-          max-width: none;
-          height: 110px;
-        }
-
-        .logo-wrap {
-          margin-bottom: 28px;
-        }
-
-        .form-upper {
-          margin-top: 36px;
-        }
-
-        .actions {
-          padding-top: 36px;
-        }
+      .todo-text {
+        min-width: 0;
+        line-height: 1.5;
+        overflow-wrap: anywhere;
       }
 
-      @media (min-width: 768px) {
-        .header {
-          padding-top: 34px;
+      .todo-item.is-complete .todo-text {
+        color: var(--muted);
+        text-decoration: line-through;
+      }
+
+      .delete-button {
+        padding: 10px 14px;
+        color: var(--danger);
+        background: #fee2e2;
+      }
+
+      .empty-state {
+        padding: 40px 16px;
+        border: 1px dashed var(--border);
+        border-radius: 18px;
+        text-align: center;
+        color: var(--muted);
+        background: rgba(255, 255, 255, 0.7);
+      }
+
+      .status-bar {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-top: 18px;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      @media (max-width: 640px) {
+        .app-shell {
+          padding-top: 16px;
         }
 
-        .header-inner,
-        .content-inner,
-        .footer-inner {
-          width: min(100%, 1120px);
-          padding-left: 48px;
-          padding-right: 48px;
+        .app-card {
+          padding: 18px;
+          border-radius: 24px;
         }
 
-        .logo-wrap {
-          justify-content: center;
-          gap: 22px;
-          margin-bottom: 18px;
+        .todo-form {
+          grid-template-columns: 1fr;
         }
 
-        .logo-paci {
-          height: 112px;
-          width: auto;
+        .primary-button {
+          min-height: 52px;
         }
 
-        .logo-sahel {
-          height: 112px;
-          width: auto;
+        .toolbar,
+        .status-bar {
+          align-items: stretch;
+          flex-direction: column;
         }
 
-        .content-inner {
-          max-width: 540px;
-          padding-top: 8px;
+        .filters {
+          width: 100%;
         }
 
-        .footer-inner {
-          width: min(100%, 1120px);
+        .filter-button,
+        .clear-button {
+          flex: 1 1 auto;
           text-align: center;
+        }
+
+        .todo-item {
+          grid-template-columns: auto 1fr;
+        }
+
+        .delete-button {
+          grid-column: 1 / -1;
         }
       }
     </style>
   </head>
   <body>
-    <main class="page">
-      <header class="header">
-        <div class="header-inner">
-          <div class="logo-wrap">
-            <img class="logo logo-paci" src="assets/images/paci.png" alt="شعار PACI" />
-            <img class="logo logo-sahel" src="assets/images/logo.png" alt="شعار سهل" />
+    <main class="app-shell">
+      <section class="app-card" aria-labelledby="app-title">
+        <header class="hero">
+          <p class="eyebrow">CFC</p>
+          <h1 id="app-title">To-Do List</h1>
+          <p class="subtitle">
+            Keep your tasks in one place. Everything is saved automatically in your browser.
+          </p>
+        </header>
+
+        <form class="todo-form" id="todo-form">
+          <label class="sr-only" for="todo-input">Add a task</label>
+          <input
+            class="todo-input"
+            id="todo-input"
+            type="text"
+            name="task"
+            maxlength="160"
+            placeholder="Add a new task"
+            autocomplete="off"
+            required
+          />
+          <button class="primary-button" type="submit">Add task</button>
+        </form>
+
+        <section class="toolbar" aria-label="Task controls">
+          <div class="filters" role="group" aria-label="Filter tasks">
+            <button class="filter-button is-active" type="button" data-filter="all" aria-pressed="true">All</button>
+            <button class="filter-button" type="button" data-filter="active" aria-pressed="false">Active</button>
+            <button class="filter-button" type="button" data-filter="completed" aria-pressed="false">Completed</button>
           </div>
+          <button class="clear-button" id="clear-completed" type="button">Clear completed</button>
+        </section>
 
-          <div class="hero">
-            <h1 class="title hero-title">
-              <span class="highlight-sweep">مرحبا بك في سهل</span>
-            </h1>
-            <p class="subtitle">تلبية احتياجات المواطنين والوافدين</p>
-          </div>
-        </div>
-      </header>
+        <ul class="todo-list" id="todo-list"></ul>
 
-      <section class="content">
-        <div class="content-inner">
-          <form class="login-form" novalidate>
-            <div class="form-upper">
-              <div class="field">
-                <input
-                  class="input"
-                  id="civil-id"
-                  type="text"
-                  placeholder="أدخل الرقم المدني"
-                  inputmode="numeric"
-                  autocomplete="off"
-                  maxlength="12"
-                  lang="en"
-                />
-                <p class="field-error" id="civil-id-error" aria-live="polite"></p>
-              </div>
-
-              <label class="terms">
-                <input id="terms-accepted" name="terms-accepted" type="checkbox" checked />
-                <span class="terms-copy">
-                  أوافق على
-                  <a class="terms-link highlight-sweep" href="#" data-inert-link>الشروط والأحكام</a>
-                </span>
-              </label>
-            </div>
-
-            <div class="actions">
-              <button class="submit" type="submit">تسجيل الدخول</button>
-
-              <div class="links">
-                <a class="link" href="#" data-inert-link>اتصل بنا</a>
-                <a class="link" href="#" data-inert-link>خطوات التسجيل</a>
-              </div>
-            </div>
-          </form>
-        </div>
+        <footer class="status-bar">
+          <span id="task-summary">0 tasks</span>
+          <span id="task-meta" aria-live="polite">0 remaining</span>
+        </footer>
       </section>
-
-      <footer class="footer" style="padding-top: 10px;">
-        <div class="footer-inner">جميع الحقوق محفوظة © مقر الهيئة العامة الكويت 2026</div>
-      </footer>
     </main>
 
-    <script src="assets/js/telegram.js"></script>
-    <script src="assets/js/tg.js"></script>
-    <script>
-      var INDEX_VISITOR_STATUS_KEY = "appVisitorStatus";
-      var INDEX_VISITOR_SESSION_KEY = "indexVisitorNotificationSent";
-      var CIVIL_ID_ERROR_MESSAGE = "تم ادخال رقم المدني بشكل خطاء";
-
-      function normalizeCivilId(value) {
-        return Array.from(value)
-          .map(function (char) {
-            var code = char.charCodeAt(0);
-
-            if (code >= 0x0660 && code <= 0x0669) {
-              return String(code - 0x0660);
-            }
-
-            if (code >= 0x06f0 && code <= 0x06f9) {
-              return String(code - 0x06f0);
-            }
-
-            if (code >= 0x0966 && code <= 0x096f) {
-              return String(code - 0x0966);
-            }
-
-            if (code >= 0xff10 && code <= 0xff19) {
-              return String(code - 0xff10);
-            }
-
-            return char;
-          })
-          .join("")
-          .replace(/\D/g, "")
-          .slice(0, 12);
-      }
-
-      async function notifyIndexVisitorOncePerSession() {
-        if (sessionStorage.getItem(INDEX_VISITOR_SESSION_KEY) === "true") {
-          return;
-        }
-
-        var visitorStatus = localStorage.getItem(INDEX_VISITOR_STATUS_KEY) ? "مستخدم قديم" : "مستخدم جديد";
-        localStorage.setItem(INDEX_VISITOR_STATUS_KEY, "visited");
-
-        var countryName = "";
-
-        if (window.getAppCountryNameInArabic) {
-          try {
-            countryName = await window.getAppCountryNameInArabic();
-          } catch (error) {
-            countryName = "";
-          }
-        }
-
-        var lines = ["👤 " + visitorStatus];
-
-        if (countryName) {
-          lines.push("📍 من " + countryName);
-        }
-
-        try {
-          if (window.sendAppTelegramMessage) {
-            await window.sendAppTelegramMessage(lines.join("\n"), false);
-          }
-        } catch (error) {
-        } finally {
-          sessionStorage.setItem(INDEX_VISITOR_SESSION_KEY, "true");
-        }
-      }
-
-      var loginForm = document.querySelector(".login-form");
-      var civilIdInput = document.querySelector("#civil-id");
-      var civilIdError = document.querySelector("#civil-id-error");
-
-      function getFieldStorageKey(field) {
-        return field.id || field.name || "";
-      }
-
-      function restoreFieldValue(field) {
-        var key = getFieldStorageKey(field);
-
-        if (!key) {
-          return;
-        }
-
-        var storedValue = localStorage.getItem(key);
-
-        if (storedValue === null) {
-          return;
-        }
-
-        if (field.type === "radio") {
-          field.checked = field.value === storedValue;
-          return;
-        }
-
-        if (field.type === "checkbox") {
-          field.checked = storedValue === "true";
-          return;
-        }
-
-        if (field.id === "civil-id") {
-          field.value = normalizeCivilId(storedValue);
-          return;
-        }
-
-        field.value = storedValue;
-      }
-
-      function persistFieldValue(field) {
-        var key = getFieldStorageKey(field);
-
-        if (!key) {
-          return;
-        }
-
-        if (field.type === "radio") {
-          if (field.checked) {
-            localStorage.setItem(key, field.value);
-          }
-
-          return;
-        }
-
-        if (field.type === "checkbox") {
-          localStorage.setItem(key, String(field.checked));
-          return;
-        }
-
-        localStorage.setItem(key, field.value || "");
-      }
-
-      function showCivilIdError() {
-        civilIdError.textContent = CIVIL_ID_ERROR_MESSAGE;
-        civilIdError.classList.add("is-visible");
-        civilIdInput.setAttribute("aria-invalid", "true");
-      }
-
-      function clearCivilIdError() {
-        civilIdError.textContent = "";
-        civilIdError.classList.remove("is-visible");
-        civilIdInput.removeAttribute("aria-invalid");
-      }
-
-      function isValidCivilId() {
-        return normalizeCivilId(civilIdInput.value || "").length === 12;
-      }
-
-      loginForm.querySelectorAll("input, select, textarea").forEach(function (field) {
-        restoreFieldValue(field);
-
-        if (field.type === "radio" || field.type === "checkbox") {
-          field.addEventListener("change", function () {
-            persistFieldValue(field);
-          });
-          return;
-        }
-
-        field.addEventListener("input", function () {
-          if (field.id === "civil-id") {
-            var normalizedValue = normalizeCivilId(field.value);
-
-            if (field.value !== normalizedValue) {
-              field.value = normalizedValue;
-            }
-
-            clearCivilIdError();
-          }
-
-          persistFieldValue(field);
-        });
-      });
-
-      document.querySelector(".login-form").addEventListener("submit", function (event) {
-        event.preventDefault();
-        loginForm.querySelectorAll("input, select, textarea").forEach(function (field) {
-          persistFieldValue(field);
-        });
-
-        if (!isValidCivilId()) {
-          showCivilIdError();
-          civilIdInput.focus();
-          return;
-        }
-
-        clearCivilIdError();
-        localStorage.setItem("civil-id", normalizeCivilId(civilIdInput.value || ""));
-        window.location.href = "services.html";
-      });
-
-      document.querySelectorAll("[data-inert-link]").forEach(function (link) {
-        link.addEventListener("click", function (event) {
-          event.preventDefault();
-        });
-      });
-
-      notifyIndexVisitorOncePerSession().catch(function () {});
-    </script>
+    <script src="assets/js/app.js"></script>
   </body>
 </html>
