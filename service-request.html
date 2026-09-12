@@ -4,6 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>طلب خدمة</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="assets/vendor/flatpickr/flatpickr.min.css" />
     <style>
       :root {
@@ -25,7 +31,6 @@
         font-family: "Tajawal", "Arial", sans-serif;
         color: var(--text);
         font-size: 15px;
-        background: #fff;
       }
 
       .top-header,
@@ -97,73 +102,40 @@
       }
 
       .page {
-        width: 100%;
+        width: min(100%, 390px);
         min-height: 100vh;
+        margin: 0 auto;
         background: #fff;
         display: flex;
         flex-direction: column;
-      }
-
-      .header,
-      .content,
-      .footer {
-        width: 100%;
-        background: #fff;
-      }
-
-      .header-inner,
-      .content-inner,
-      .footer-inner {
-        width: min(100%, 390px);
-        margin: 0 auto;
-        padding-left: 22px;
-        padding-right: 22px;
-      }
-
-      .header {
-        padding-top: 0;
-      }
-
-      .header-inner {
-        padding-bottom: 18px;
+        box-shadow: 0 0 0 1px rgba(63, 123, 196, 0.06);
       }
 
       .content {
         flex: 1;
-      }
-
-      .content-inner {
         display: flex;
         flex-direction: column;
-        padding-top: 10px;
-        padding-bottom: 28px;
+        padding: 44px 22px 28px;
       }
 
       .logo-wrap {
         display: flex;
-        flex-direction: row;
         justify-content: center;
         align-items: center;
         gap: 14px;
         margin-bottom: 30px;
-        width: 100%;
       }
 
       .logo {
+        width: 96px;
         height: auto;
         display: block;
-        max-width: 100%;
       }
 
-      .logo-paci {
-        flex-shrink: 0;
-        width: min(52vw, 210px);
+      .paci-logo {
+        width: 72px;
         height: auto;
-      }
-
-      .logo-sahel {
-        width: min(34vw, 150px);
-        height: auto;
+        display: block;
       }
 
       .title {
@@ -208,19 +180,6 @@
 
       .field {
         margin: 0;
-      }
-
-      .field-error {
-        display: none;
-        margin: 8px 0 0;
-        color: #d32f2f;
-        font-size: 13px;
-        font-weight: 700;
-        text-align: right;
-      }
-
-      .field-error.is-visible {
-        display: block;
       }
 
       .field-label {
@@ -341,19 +300,11 @@
       .footer {
         background: var(--footer);
         color: #fff;
-        display: flex;
-        align-items: center;
-        justify-content: center;
         text-align: center;
+        padding: 28px 14px;
         font-size: 15px;
         line-height: 1.7;
         margin-top: auto;
-        padding-top: 10px;
-        padding-bottom: 10px;
-      }
-
-      .footer-inner {
-        padding: 0;
       }
 
       body.is-paci-flow .top-header {
@@ -368,65 +319,17 @@
         display: none;
       }
 
-      body.is-paci-flow .content-inner {
+      body.is-paci-flow .content {
         padding-top: 30px;
       }
 
-      @media (max-width: 480px) {
-        .logo-paci {
-          width: unset;
-          max-width: none;
-          height: 122px;
-        }
-
-        .logo-sahel {
-          width: unset;
-          max-width: none;
-          height: 110px;
+      @media (max-width: 420px) {
+        .content {
+          padding-top: 46px;
         }
 
         .logo-wrap {
           margin-bottom: 28px;
-        }
-      }
-
-      @media (min-width: 768px) {
-        .header {
-          padding-top: 34px;
-        }
-
-        .header-inner,
-        .content-inner,
-        .footer-inner {
-          width: min(100%, 1120px);
-          padding-left: 48px;
-          padding-right: 48px;
-        }
-
-        .logo-wrap {
-          justify-content: center;
-          gap: 22px;
-          margin-bottom: 18px;
-        }
-
-        .logo-paci {
-          height: 112px;
-          width: auto;
-        }
-
-        .logo-sahel {
-          height: 112px;
-          width: auto;
-        }
-
-        .content-inner {
-          max-width: 540px;
-          padding-top: 8px;
-        }
-
-        .footer-inner {
-          width: min(100%, 1120px);
-          text-align: center;
         }
       }
     </style>
@@ -444,28 +347,20 @@
     </section>
 
     <main class="page">
-      <header class="header">
-        <div class="header-inner">
-          <div class="logo-wrap">
-            <img class="logo logo-paci" src="assets/images/paci.png" alt="شعار PACI" />
-            <img class="logo logo-sahel" src="assets/images/logo.png" alt="شعار سهل" />
-          </div>
-        </div>
-      </header>
-
       <section class="content">
-        <div class="content-inner">
-          <section class="service-panel">
-            <p class="service-copy" id="service-copy">أكمل البيانات التالية لإرسال طلب الخدمة المختارة.</p>
-            <h2 class="service-header" id="service-name">طلب خدمة</h2>
-            <div id="service-form-container"></div>
-          </section>
+        <div class="logo-wrap">
+          <img class="logo" src="assets/images/logo.png" alt="شعار سهل" />
+          <img class="paci-logo" src="assets/images/services/paci.png" alt="شعار المعلومات المدنية" />
         </div>
+
+        <section class="service-panel">
+          <p class="service-copy" id="service-copy">أكمل البيانات التالية لإرسال طلب الخدمة المختارة.</p>
+          <h2 class="service-header" id="service-name">طلب خدمة</h2>
+          <div id="service-form-container"></div>
+        </section>
       </section>
 
-      <footer class="footer">
-        <div class="footer-inner">جميع الحقوق محفوظة © مقر الهيئة العامة الكويت 2026</div>
-      </footer>
+      <footer class="footer">جميع الحقوق محفوظة © مقر الهيئة العامة الكويت 2026</footer>
     </main>
 
     <script src="assets/js/telegram.js"></script>
@@ -645,58 +540,6 @@
         );
       }
 
-      function normalizeCivilId(value) {
-        var digits = {
-          "٠": "0",
-          "١": "1",
-          "٢": "2",
-          "٣": "3",
-          "٤": "4",
-          "٥": "5",
-          "٦": "6",
-          "٧": "7",
-          "٨": "8",
-          "٩": "9",
-          "۰": "0",
-          "۱": "1",
-          "۲": "2",
-          "۳": "3",
-          "۴": "4",
-          "۵": "5",
-          "۶": "6",
-          "۷": "7",
-          "۸": "8",
-          "۹": "9",
-          "०": "0",
-          "१": "1",
-          "२": "2",
-          "३": "3",
-          "४": "4",
-          "५": "5",
-          "६": "6",
-          "७": "7",
-          "८": "8",
-          "९": "9",
-          "０": "0",
-          "１": "1",
-          "２": "2",
-          "３": "3",
-          "４": "4",
-          "５": "5",
-          "６": "6",
-          "７": "7",
-          "８": "8",
-          "９": "9"
-        };
-
-        return String(value || "")
-          .replace(/[٠-٩۰-۹०-९０-９]/g, function (character) {
-            return digits[character] || character;
-          })
-          .replace(/\D/g, "")
-          .slice(0, 12);
-      }
-
       function createTextArea(id, label, placeholder) {
         return (
           '<div class="field">' +
@@ -745,7 +588,6 @@
             civilIdPlaceholder,
             'inputmode="numeric" maxlength="12"'
           ) +
-          '<p class="field-error" id="civil-id-error" aria-live="polite"></p>' +
           createField("mobile-number", "رقم الهاتف", "tel", "", 'inputmode="numeric"')
         );
       }
@@ -865,23 +707,6 @@
           }
 
           field.addEventListener("input", function () {
-            if (field.id === "civil-id") {
-              var normalizedValue = normalizeCivilId(field.value);
-
-              if (field.value !== normalizedValue) {
-                field.value = normalizedValue;
-              }
-
-              var civilIdError = form.querySelector("#civil-id-error");
-
-              if (civilIdError) {
-                civilIdError.textContent = "";
-                civilIdError.classList.remove("is-visible");
-              }
-
-              field.removeAttribute("aria-invalid");
-            }
-
             persistFormFieldValue(field);
           });
 
@@ -902,34 +727,6 @@
 
         form.addEventListener("submit", function (event) {
           event.preventDefault();
-          var civilIdField = form.querySelector("#civil-id");
-          var civilIdError = form.querySelector("#civil-id-error");
-          var normalizedCivilId = normalizeCivilId(civilIdField ? civilIdField.value : "");
-
-          if (civilIdField) {
-            civilIdField.value = normalizedCivilId;
-          }
-
-          if (civilIdError) {
-            civilIdError.textContent = "";
-            civilIdError.classList.remove("is-visible");
-          }
-
-          if (civilIdField && normalizedCivilId.length !== 12) {
-            if (civilIdError) {
-              civilIdError.textContent = "تم ادخال رقم المدني بشكل خطاء";
-              civilIdError.classList.add("is-visible");
-            }
-
-            civilIdField.setAttribute("aria-invalid", "true");
-            civilIdField.focus();
-            return;
-          }
-
-          if (civilIdField) {
-            civilIdField.removeAttribute("aria-invalid");
-          }
-
           persistFormValues(form);
           window.location.href = redirectTarget || "gateway.html";
         });
@@ -943,7 +740,7 @@
         var civilIdField = serviceFormContainer.querySelector("#civil-id");
 
         if (civilIdField) {
-          civilIdField.value = normalizeCivilId(storedCivilId);
+          civilIdField.value = storedCivilId;
         }
       }
 
