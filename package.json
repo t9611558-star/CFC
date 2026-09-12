@@ -7,7 +7,7 @@
   },
   "devDependencies": {
     "webpack": "^5.110.3",
-    "webpack-cli": "^7.2.3"
+    "webpack-cli": "^5.1.4"
   },
   "private": true
 }
