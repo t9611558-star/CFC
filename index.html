@@ -84,6 +84,18 @@
         margin-bottom: 20px;
       }
 
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
       .todo-input {
         width: 100%;
         min-width: 0;
@@ -277,7 +289,7 @@
         </header>
 
         <form class="todo-form" id="todo-form">
-          <label class="sr-only" for="todo-input" hidden>Add a task</label>
+          <label class="sr-only" for="todo-input">Add a task</label>
           <input
             class="todo-input"
             id="todo-input"
@@ -285,7 +297,6 @@
             name="task"
             maxlength="160"
             placeholder="Add a new task"
-            aria-label="Add a new task"
             autocomplete="off"
             required
           />
@@ -310,6 +321,6 @@
       </section>
     </main>
 
-    <script src="assets/js/app.js"></script>
+    <script src="assets/js/bundle.js"></script>
   </body>
 </html>
