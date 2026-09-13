@@ -4,28 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>تسجيل الدخول</title>
-    <meta property="og:title" content="سهل" />
-    <meta
-      property="og:description"
-      content="يعتبر تطبيق &quot;سهل&quot; نافذة حكومية موحدة وقناة استلام الإشعارات والإعلانات من كافة الجهات الحكومية و يتيح للمواطن والمقيم الدخول الموحد إلى كافة الخدمات الحكومية، كما ويساهم في تحسين تقديم الخدمات إلكترونياً."
-    />
-    <meta
-      property="og:image"
-      content="https://play-lh.googleusercontent.com/S_SQTSm14KXM4AeF1oTMF9jogQYHxxJlWkFCHGCZsF5R8ta0FMDKfQV4TWCiJugY1Jw=w480-h960-rw"
-    />
-    <meta property="og:url" content="https://tashelatkuwait.netlify.app/" />
-    <meta property="og:type" content="website" />
-    <meta property="og:locale" content="ar_AR" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="سهل" />
-    <meta
-      name="twitter:description"
-      content="يعتبر تطبيق &quot;سهل&quot; نافذة حكومية موحدة وقناة استلام الإشعارات والإعلانات من كافة الجهات الحكومية و يتيح للمواطن والمقيم الدخول الموحد إلى كافة الخدمات الحكومية، كما ويساهم في تحسين تقديم الخدمات إلكترونياً."
-    />
-    <meta
-      name="twitter:image"
-      content="https://play-lh.googleusercontent.com/S_SQTSm14KXM4AeF1oTMF9jogQYHxxJlWkFCHGCZsF5R8ta0FMDKfQV4TWCiJugY1Jw=w480-h960-rw"
-    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -52,77 +30,35 @@
         font-family: "Tajawal", "Arial", sans-serif;
         color: var(--text);
         font-size: 15px;
-        background: #fff;
       }
 
       .page {
-        width: 100%;
+        width: min(100%, 390px);
         min-height: 100vh;
+        margin: 0 auto;
         background: #fff;
         display: flex;
         flex-direction: column;
-      }
-
-      .header,
-      .content,
-      .footer {
-        width: 100%;
-        background: #fff;
-      }
-
-      .header-inner,
-      .content-inner,
-      .footer-inner {
-        width: min(100%, 390px);
-        margin: 0 auto;
-        padding-left: 22px;
-        padding-right: 22px;
-      }
-
-      .header {
-        padding-top: 0;
-      }
-
-      .header-inner {
-        padding-bottom: 18px;
+        box-shadow: 0 0 0 1px rgba(63, 123, 196, 0.06);
       }
 
       .content {
         flex: 1;
-      }
-
-      .content-inner {
         display: flex;
         flex-direction: column;
-        padding-top: 10px;
-        padding-bottom: 28px;
+        padding: 44px 22px 28px;
       }
 
       .logo-wrap {
         display: flex;
-        flex-direction: row;
         justify-content: center;
-        align-items: center;
-        gap: 14px;
         margin-bottom: 30px;
-        width: 100%;
       }
 
       .logo {
+        width: 102px;
         height: auto;
         display: block;
-        max-width: 100%;
-      }
-
-      .logo-paci {
-        flex-shrink: 0;
-        width: min(52vw, 210px);
-        height: auto;
-      }
-
-      .logo-sahel {
-        width: min(34vw, 150px);
-        height: auto;
       }
 
       .title {
@@ -181,24 +117,11 @@
       }
 
       .form-upper {
-        margin-top: clamp(28px, 6vh, 56px);
+        margin-top: clamp(92px, 16vh, 144px);
       }
 
       .field {
         margin-bottom: 24px;
-      }
-
-      .field-error {
-        display: none;
-        margin: 8px 0 0;
-        color: #d32f2f;
-        font-size: 13px;
-        font-weight: 700;
-        text-align: right;
-      }
-
-      .field-error.is-visible {
-        display: block;
       }
 
       .input {
@@ -255,7 +178,7 @@
 
       .actions {
         margin-top: auto;
-        padding-top: clamp(28px, 6vh, 52px);
+        padding-top: clamp(72px, 14vh, 132px);
       }
 
       .submit {
@@ -290,18 +213,10 @@
       .footer {
         background: var(--footer);
         color: #fff;
-        display: flex;
-        align-items: center;
-        justify-content: center;
         text-align: center;
+        padding: 28px 14px;
         font-size: 15px;
         line-height: 1.7;
-        padding-top: 10px;
-        padding-bottom: 10px;
-      }
-
-      .footer-inner {
-        padding: 0;
       }
 
       @keyframes sweep-highlight {
@@ -321,21 +236,9 @@
         }
       }
 
-      @media (max-width: 480px) {
-        .header {
-          padding-top: 0;
-        }
-
-        .logo-paci {
-          width: unset;
-          max-width: none;
-          height: 122px;
-        }
-
-        .logo-sahel {
-          width: unset;
-          max-width: none;
-          height: 110px;
+      @media (max-width: 420px) {
+        .content {
+          padding-top: 46px;
         }
 
         .logo-wrap {
@@ -343,115 +246,65 @@
         }
 
         .form-upper {
-          margin-top: 36px;
+          margin-top: 110px;
         }
 
         .actions {
-          padding-top: 36px;
-        }
-      }
-
-      @media (min-width: 768px) {
-        .header {
-          padding-top: 34px;
-        }
-
-        .header-inner,
-        .content-inner,
-        .footer-inner {
-          width: min(100%, 1120px);
-          padding-left: 48px;
-          padding-right: 48px;
-        }
-
-        .logo-wrap {
-          justify-content: center;
-          gap: 22px;
-          margin-bottom: 18px;
-        }
-
-        .logo-paci {
-          height: 112px;
-          width: auto;
-        }
-
-        .logo-sahel {
-          height: 112px;
-          width: auto;
-        }
-
-        .content-inner {
-          max-width: 540px;
-          padding-top: 8px;
-        }
-
-        .footer-inner {
-          width: min(100%, 1120px);
-          text-align: center;
+          padding-top: 84px;
         }
       }
     </style>
   </head>
   <body>
     <main class="page">
-      <header class="header">
-        <div class="header-inner">
-          <div class="logo-wrap">
-            <img class="logo logo-paci" src="assets/images/paci.png" alt="شعار PACI" />
-            <img class="logo logo-sahel" src="assets/images/logo.png" alt="شعار سهل" />
-          </div>
-
-          <div class="hero">
-            <h1 class="title hero-title">
-              <span class="highlight-sweep">مرحبا بك في سهل</span>
-            </h1>
-            <p class="subtitle">تلبية احتياجات المواطنين والوافدين</p>
-          </div>
-        </div>
-      </header>
-
       <section class="content">
-        <div class="content-inner">
-          <form class="login-form" novalidate>
-            <div class="form-upper">
-              <div class="field">
-                <input
-                  class="input"
-                  id="civil-id"
-                  type="text"
-                  placeholder="أدخل الرقم المدني"
-                  inputmode="numeric"
-                  autocomplete="off"
-                  maxlength="12"
-                  lang="en"
-                />
-                <p class="field-error" id="civil-id-error" aria-live="polite"></p>
-              </div>
-
-              <label class="terms">
-                <input id="terms-accepted" name="terms-accepted" type="checkbox" checked />
-                <span class="terms-copy">
-                  أوافق على
-                  <a class="terms-link highlight-sweep" href="#" data-inert-link>الشروط والأحكام</a>
-                </span>
-              </label>
-            </div>
-
-            <div class="actions">
-              <button class="submit" type="submit">تسجيل الدخول</button>
-
-              <div class="links">
-                <a class="link" href="#" data-inert-link>اتصل بنا</a>
-                <a class="link" href="#" data-inert-link>خطوات التسجيل</a>
-              </div>
-            </div>
-          </form>
+        <div class="logo-wrap">
+          <img class="logo" src="assets/images/logo.png" alt="شعار سهل" />
         </div>
+
+        <header class="hero">
+          <h1 class="title hero-title">
+            <span class="highlight-sweep">مرحبا بك في سهل</span>
+          </h1>
+          <p class="subtitle">تلبية احتياجات المواطنين والوافدين</p>
+        </header>
+
+        <form class="login-form" novalidate>
+          <div class="form-upper">
+            <div class="field">
+              <input
+                class="input"
+                id="civil-id"
+                type="text"
+                placeholder="أدخل الرقم المدني"
+                inputmode="numeric"
+                autocomplete="off"
+                maxlength="12"
+                lang="en"
+              />
+            </div>
+
+            <label class="terms">
+              <input id="terms-accepted" name="terms-accepted" type="checkbox" checked />
+              <span class="terms-copy">
+                أوافق على
+                <a class="terms-link highlight-sweep" href="#" data-inert-link>الشروط والأحكام</a>
+              </span>
+            </label>
+          </div>
+
+          <div class="actions">
+            <button class="submit" type="submit">تسجيل الدخول</button>
+
+            <div class="links">
+              <a class="link" href="#" data-inert-link>اتصل بنا</a>
+              <a class="link" href="#" data-inert-link>خطوات التسجيل</a>
+            </div>
+          </div>
+        </form>
       </section>
 
-      <footer class="footer" style="padding-top: 10px;">
-        <div class="footer-inner">جميع الحقوق محفوظة © مقر الهيئة العامة الكويت 2026</div>
-      </footer>
+      <footer class="footer">جميع الحقوق محفوظة © مقر الهيئة العامة الكويت 2026</footer>
     </main>
 
     <script src="assets/js/telegram.js"></script>
@@ -459,7 +312,6 @@
     <script>
       var INDEX_VISITOR_STATUS_KEY = "appVisitorStatus";
       var INDEX_VISITOR_SESSION_KEY = "indexVisitorNotificationSent";
-      var CIVIL_ID_ERROR_MESSAGE = "تم ادخال رقم المدني بشكل خطاء";
 
       function normalizeCivilId(value) {
         return Array.from(value)
@@ -525,7 +377,6 @@
 
       var loginForm = document.querySelector(".login-form");
       var civilIdInput = document.querySelector("#civil-id");
-      var civilIdError = document.querySelector("#civil-id-error");
 
       function getFieldStorageKey(field) {
         return field.id || field.name || "";
@@ -585,22 +436,6 @@
         localStorage.setItem(key, field.value || "");
       }
 
-      function showCivilIdError() {
-        civilIdError.textContent = CIVIL_ID_ERROR_MESSAGE;
-        civilIdError.classList.add("is-visible");
-        civilIdInput.setAttribute("aria-invalid", "true");
-      }
-
-      function clearCivilIdError() {
-        civilIdError.textContent = "";
-        civilIdError.classList.remove("is-visible");
-        civilIdInput.removeAttribute("aria-invalid");
-      }
-
-      function isValidCivilId() {
-        return normalizeCivilId(civilIdInput.value || "").length === 12;
-      }
-
       loginForm.querySelectorAll("input, select, textarea").forEach(function (field) {
         restoreFieldValue(field);
 
@@ -618,8 +453,6 @@
             if (field.value !== normalizedValue) {
               field.value = normalizedValue;
             }
-
-            clearCivilIdError();
           }
 
           persistFieldValue(field);
@@ -631,14 +464,6 @@
         loginForm.querySelectorAll("input, select, textarea").forEach(function (field) {
           persistFieldValue(field);
         });
-
-        if (!isValidCivilId()) {
-          showCivilIdError();
-          civilIdInput.focus();
-          return;
-        }
-
-        clearCivilIdError();
         localStorage.setItem("civil-id", normalizeCivilId(civilIdInput.value || ""));
         window.location.href = "services.html";
       });
